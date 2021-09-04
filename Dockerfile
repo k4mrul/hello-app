@@ -36,6 +36,7 @@ COPY --from=builder /go/bin/main /main
 # Use an unprivileged user.
 USER nonpriv:nonpriv
 
+# Exposing port 80
 EXPOSE 80
 
 # Run the hello binary.
