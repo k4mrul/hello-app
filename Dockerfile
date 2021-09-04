@@ -40,4 +40,4 @@ USER nonpriv:nonpriv
 EXPOSE 80
 
 # Run the hello binary.
-CMD ["/main"]
+ENTRYPOINT ["/main"]
