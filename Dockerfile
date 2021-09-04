@@ -27,14 +27,14 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/m
 FROM scratch
 
 # Import the user and group files from the builder.
-# COPY --from=builder /etc/passwd /etc/passwd
-# COPY --from=builder /etc/group /etc/group
+COPY --from=builder /etc/passwd /etc/passwd
+COPY --from=builder /etc/group /etc/group
 
 # Copy our static executable.
 COPY --from=builder /go/bin/main /main
 
-# # Use an unprivileged user.
-# USER nonpriv:nonpriv
+# Use an unprivileged user.
+USER nonpriv
 
 # # Exposing port 80
 # EXPOSE 80
