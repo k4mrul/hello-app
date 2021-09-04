@@ -22,7 +22,7 @@ RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -ldflags="-w -s" -o /go/bin/m
 
 
 FROM ubuntu:latest AS ubuntuUser
-RUN useradd -u 10006 nobody
+RUN useradd -u 10006 scratchuser
 
 
 
@@ -42,7 +42,7 @@ COPY --from=builder /go/bin/main /main
 
 # Use an unprivileged user.
 COPY --from=ubuntuUser /etc/passwd /etc/passwd
-USER nobody
+USER scratchuser
 
 # Exposing port 80
 # EXPOSE 80
