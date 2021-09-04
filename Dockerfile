@@ -44,8 +44,8 @@ COPY --from=builder /go/bin/main /main
 COPY --from=ubuntuUser /etc/passwd /etc/passwd
 USER scratchuser
 
-# Exposing port 80
-# EXPOSE 80
+# Exposing port 8080
+EXPOSE 8080
 
 # Run the hello binary.
 CMD ["/main"]
